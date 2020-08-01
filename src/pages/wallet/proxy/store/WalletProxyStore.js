@@ -40,7 +40,6 @@ export const WalletProxyStore = (props) => {
       <Button
         variant={"contained"}
         onClick={() => {
-          console.log("redirect....");
           window.location.href = state.redirect_uri + "?status=accepted";
         }}
       >

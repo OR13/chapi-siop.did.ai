@@ -25,7 +25,7 @@ export const WalletFrameStore = (props) => {
 
       if (parsedQueryString.status && parsedQueryString.status === "accepted") {
         console.log("Remote Wallet Accepted Credential.");
-        event.respondWith(
+        return event.respondWith(
           new Promise((resolve) => {
             return resolve({ dataType: "Response", data: "result" });
           })
@@ -52,7 +52,7 @@ export const WalletFrameStore = (props) => {
       });
     };
 
-    credentialHandlerPolyfill.loadOnce().then(handleStoreEvent);
+    credentialHandlerPolyfill.load().then(handleStoreEvent);
   }, []);
   return (
     <div style={{ padding: "8px" }}>

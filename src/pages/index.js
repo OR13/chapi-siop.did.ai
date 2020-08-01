@@ -1,13 +1,15 @@
 import { Home } from "./home";
-import { ChapiWindowGet } from "./chapi/window-get";
-import { ChapiWindowStore } from "./chapi/window-store";
+
 import { Issuer } from "./issuer";
 import { Verifier } from "./verifier";
+
+import { ChapiWindowGet } from "./wallet/frame/get";
+import { ChapiWindowStore } from "./wallet/frame/store";
 
 export const routes = [
   { path: "/", exact: true, component: Home },
   { path: "/issuer", exact: true, component: Issuer },
   { path: "/verifier", exact: true, component: Verifier },
-  { path: "/chapi/window-get", exact: true, component: ChapiWindowGet },
-  { path: "/chapi/window-store", exact: true, component: ChapiWindowStore },
+  { path: "/wallet/frame/get", exact: true, component: ChapiWindowGet },
+  { path: "/wallet/frame/store", exact: true, component: ChapiWindowStore },
 ];

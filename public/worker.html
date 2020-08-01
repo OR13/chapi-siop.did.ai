@@ -22,14 +22,14 @@
           async get(event) {
             return {
               type: "redirect",
-              url: `${WALLET_LOCATION}/chapi/window-get`,
+              url: `${WALLET_LOCATION}/wallet/frame/get`,
               // url: `${WALLET_LOCATION}/wallet-ui-get.html`
             };
           },
           async store(event) {
             return {
               type: "redirect",
-              url: `${WALLET_LOCATION}/chapi/window-store`,
+              url: `${WALLET_LOCATION}/wallet/frame/store`,
               // url: `${WALLET_LOCATION}/wallet-ui-store.html`
             };
           },

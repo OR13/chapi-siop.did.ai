@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import Base from "../../base/base";
 
 const { WebCredentialHandler, credentialHandlerPolyfill } = window;
 
@@ -36,7 +35,7 @@ export const ChapiWindowStore = (props) => {
     credentialHandlerPolyfill.loadOnce().then(handleStoreEvent);
   }, []);
   return (
-    <Base>
+    <React.Fragment>
       <Typography>ChapiWindowStore</Typography>
       <Button
         onClick={() => {
@@ -49,9 +48,7 @@ export const ChapiWindowStore = (props) => {
       >
         Cancel
       </Button>
-
       <Button
-        style={{ float: "right" }}
         variant={"contained"}
         color={"primary"}
         onClick={() => {
@@ -66,7 +63,7 @@ export const ChapiWindowStore = (props) => {
         Confirm
       </Button>
       <pre>{JSON.stringify(state, null, 2)}</pre>
-    </Base>
+    </React.Fragment>
   );
 };
 

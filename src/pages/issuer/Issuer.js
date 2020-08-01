@@ -37,6 +37,7 @@ export const Issuer = (props) => {
             webCredentialWrapper
           );
           console.log("Result of receiving via store() request:", result);
+          setState({ ...state, result });
         }}
       >
         Receive Credentials

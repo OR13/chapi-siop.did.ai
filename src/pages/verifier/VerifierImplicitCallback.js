@@ -9,14 +9,10 @@ const queryString = require("query-string");
 export const VerifierImplicitCallback = (props) => {
   const [state, setState] = React.useState({});
   const parsedQueryString = queryString.parse(window.location.search);
-
+  const { id_token } = parsedQueryString;
   React.useEffect(() => {
-    if (parsedQueryString.id_token) {
-      const [
-        encodedHeader,
-        encodedPayload,
-        signature,
-      ] = parsedQueryString.id_token.split(".");
+    if (id_token) {
+      const [encodedHeader, encodedPayload, signature] = id_token.split(".");
       const result = {
         header: JSON.parse(base64url.decode(encodedHeader)),
         payload: JSON.parse(base64url.decode(encodedPayload)),
@@ -26,7 +22,7 @@ export const VerifierImplicitCallback = (props) => {
         id_token: result,
       });
     }
-  }, [parsedQueryString]);
+  }, [id_token]);
   return (
     <Base>
       <Typography>Received Credentials</Typography>

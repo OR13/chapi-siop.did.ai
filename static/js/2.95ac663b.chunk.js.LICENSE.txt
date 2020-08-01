@@ -32,6 +32,13 @@ object-assign
  */
 
 /*!
+ * The buffer module from node.js, for the browser.
+ *
+ * @author   Feross Aboukhadijeh <http://feross.org>
+ * @license  MIT
+ */
+
+/*!
  * Utilities for Web Request RPC.
  *
  * Copyright (c) 2017 Digital Bazaar, Inc. All rights reserved.

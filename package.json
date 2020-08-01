@@ -56,7 +56,8 @@
     "test": "jest",
     "lint:fix": "eslint src --fix",
     "build": "NODE_OPTIONS=--max_old_space_size=4096 react-scripts build && cp ./build/index.html ./build/404.html",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "shove": "git add -A; git commit -m ':rocket:'; git push origin master"
   },
   "browserslist": {
     "production": [

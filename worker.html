@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Minimal Dev Wallet - Worker</title>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/credential-handler-polyfill@2.1.1/dist/credential-handler-polyfill.min.js"></script>
+    <script src="https://unpkg.com/web-credential-handler@1.0.1/dist/web-credential-handler.min.js"></script>
+  </head>
+
+  <body>
+    <script>
+      const WALLET_LOCATION = window.origin;
+
+      async function activateHandler() {
+        try {
+          await credentialHandlerPolyfill.loadOnce();
+        } catch (e) {
+          console.error("Error in loadOnce:", e);
+        }
+
+        return WebCredentialHandler.activateHandler({
+          async get(event) {
+            return {
+              type: "redirect",
+              url: `${WALLET_LOCATION}/chapi/wallet/get`,
+              // url: `${WALLET_LOCATION}/wallet-ui-get.html`
+            };
+          },
+          async store(event) {
+            return {
+              type: "redirect",
+              url: `${WALLET_LOCATION}/chapi/wallet/store`,
+              // url: `${WALLET_LOCATION}/wallet-ui-store.html`
+            };
+          },
+        });
+      }
+
+      activateHandler();
+    </script>
+  </body>
+</html>

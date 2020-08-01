@@ -3,40 +3,35 @@ import PropTypes from "prop-types";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 
+import { vp } from "../../../../fixtures";
+
 const { WebCredentialHandler, credentialHandlerPolyfill } = window;
 
-export const ChapiWindowStore = (props) => {
-  const [state, setState] = React.useState({});
+export const WalletFrameGet = (props) => {
+  const [state, setState] = React.useState({
+    event: {},
+    query: {},
+  });
 
   React.useEffect(() => {
-    const handleStoreEvent = async () => {
+    async function handleGetEvent() {
       const event = await WebCredentialHandler.receiveCredentialEvent();
-      console.log("Store Credential Event:", JSON.stringify(event, null, 2));
-      const credential = event.credential;
-      // Display the credential details, for confirmation
-      const vp = credential.data;
-      let vc;
-      if (vp.verifiableCredential) {
-        vc = Array.isArray(vp.verifiableCredential)
-          ? vp.verifiableCredential[0]
-          : vp.verifiableCredential;
-      } else {
-        vc = vp;
-      }
+      console.log("Wallet processing get() event:", event);
+      const vp = event.credentialRequestOptions.web.VerifiablePresentation;
+      const query = Array.isArray(vp.query) ? vp.query[0] : vp.query;
 
       setState({
         ...state,
         event,
-        credential,
-        vc,
+        query,
       });
-    };
-
-    credentialHandlerPolyfill.loadOnce().then(handleStoreEvent);
+    }
+    credentialHandlerPolyfill.loadOnce().then(handleGetEvent);
   }, []);
+
   return (
     <React.Fragment>
-      <Typography>ChapiWindowStore</Typography>
+      <Typography>WalletFrameGet</Typography>
       <Button
         onClick={() => {
           state.event.respondWith(
@@ -52,10 +47,10 @@ export const ChapiWindowStore = (props) => {
         variant={"contained"}
         color={"primary"}
         onClick={() => {
-          // store credential data... here... state.credential.data
           state.event.respondWith(
-            new Promise((resolve) => {
-              return resolve({ dataType: "Response", data: "result" });
+            Promise.resolve({
+              dataType: "VerifiablePresentation",
+              data: vp,
             })
           );
         }}
@@ -67,6 +62,6 @@ export const ChapiWindowStore = (props) => {
   );
 };
 
-ChapiWindowStore.propTypes = {
+WalletFrameGet.propTypes = {
   wallet: PropTypes.any,
 };

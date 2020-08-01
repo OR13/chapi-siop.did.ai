@@ -6,7 +6,7 @@ import Base from "../../../base/base";
 
 import { Typography } from "@material-ui/core";
 
-export const ChapiWalletProxyGet = (props) => {
+export const WalletProxyGet = (props) => {
   return (
     <Base>
       <Typography>
@@ -25,6 +25,6 @@ export const ChapiWalletProxyGet = (props) => {
   );
 };
 
-ChapiWalletProxyGet.propTypes = {
+WalletProxyGet.propTypes = {
   wallet: PropTypes.any,
 };

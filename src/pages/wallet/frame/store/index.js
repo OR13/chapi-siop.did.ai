@@ -1,1 +1,1 @@
-export * from "./ChapiWindowStore";
+export * from "./WalletFrameStore";

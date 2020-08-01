@@ -1,1 +1,1 @@
-export * from "./ChapiWalletProxyStore";
+export * from "./WalletProxyStore";

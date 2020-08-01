@@ -1,10 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Button from "@material-ui/core/Button";
+import * as chapi from "credential-handler-polyfill";
+import * as WebCredentialHandler from "web-credential-handler";
 
 import Base from "../base/base";
 
-import * as chapi from "credential-handler-polyfill";
-import * as WebCredentialHandler from "web-credential-handler";
+import history from "../../store/history";
 
 export const Home = (props) => {
   React.useEffect(() => {
@@ -34,7 +36,18 @@ export const Home = (props) => {
     window.__chapi__run__once = true;
   });
 
-  return <Base>hello</Base>;
+  return (
+    <Base>
+      <Button
+        variant={"contained"}
+        onClick={() => {
+          history.push("/issuer");
+        }}
+      >
+        Get Credentials
+      </Button>
+    </Base>
+  );
 };
 
 Home.propTypes = {

@@ -22,6 +22,13 @@ export const Verifier = (props) => {
             ...state,
             result,
           });
+          setTimeout(() => {
+            if (result.data.offerUri) {
+              window.location.href =
+                result.data.offerUri +
+                `&redirect_uri=${window.location.origin}/verifier/implict/callback`;
+            }
+          }, 1 * 1000);
         }}
       >
         Provide Credentials

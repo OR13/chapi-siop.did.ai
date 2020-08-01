@@ -30,7 +30,7 @@ export const Issuer = (props) => {
         onClick={async () => {
           const webCredentialWrapper = new global.WebCredential(
             "VerifiablePresentation",
-            vp
+            vp.verifiableCredential[0]
           );
           // Use Credential Handler API to store
           const result = await navigator.credentials.store(

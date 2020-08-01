@@ -6,21 +6,47 @@ import Base from "../../../base/base";
 
 import { Typography } from "@material-ui/core";
 
+const base64url = require("base64url");
+const queryString = require("query-string");
+
 export const WalletProxyGet = (props) => {
+  const [state, setState] = React.useState({
+    query: {},
+    from: "",
+  });
+  React.useEffect(() => {
+    const parsed = queryString.parse(window.location.search);
+    const query = JSON.parse(base64url.decode(parsed.query));
+    const from = new URL(parsed.redirect_uri);
+    setState({
+      ...parsed,
+      from: from.origin,
+      query,
+    });
+  }, []);
+
   return (
     <Base>
-      <Typography>
-        Are you sure you want to provide website ABC, with credentials XYZ?
+      <Typography gutterBottom>
+        Are you sure you want to provide:
+        <Button
+          variant={"contained"}
+          color={"secondary"}
+          style={{ float: "right" }}
+          onClick={() => {
+            const fakeIdToken =
+              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
+            window.location.href =
+              state.redirect_uri + `?id_token=${fakeIdToken}`;
+          }}
+        >
+          Present Credentials
+        </Button>
       </Typography>
 
-      <Button
-        variant={"contained"}
-        onClick={() => {
-          console.log("redirect....");
-        }}
-      >
-        Yes
-      </Button>
+      <Typography gutterBottom>Requesting Party: {state.from}</Typography>
+      <Typography gutterBottom>Requesting Party Query:</Typography>
+      <pre>{JSON.stringify(state.query, null, 2)}</pre>
     </Base>
   );
 };

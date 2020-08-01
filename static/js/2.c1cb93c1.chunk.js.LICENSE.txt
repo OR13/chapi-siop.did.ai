@@ -4,6 +4,39 @@ object-assign
 @license MIT
 */
 
+/*!
+ * A CredentialHandlerRegistration provides a CredentialManager to enable Web
+ * apps to register Profiles that can be presented to websites.
+ *
+ * Copyright (c) 2017 Digital Bazaar, Inc. All rights reserved.
+ */
+
+/*!
+ * A CredentialManager for a Web Credential Mediator.
+ *
+ * Copyright (c) 2017-2018 Digital Bazaar, Inc. All rights reserved.
+ */
+
+/*!
+ * A WebApp is a remote application that runs in a WebAppContext.
+ *
+ * Copyright (c) 2017 Digital Bazaar, Inc. All rights reserved.
+ */
+
+/*!
+ * Copyright (c) 2017 Digital Bazaar, Inc. All rights reserved.
+ */
+
+/*!
+ * Copyright (c) 2017-2018 Digital Bazaar, Inc. All rights reserved.
+ */
+
+/*!
+ * Utilities for Web Request RPC.
+ *
+ * Copyright (c) 2017 Digital Bazaar, Inc. All rights reserved.
+ */
+
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
 

@@ -46,6 +46,16 @@ export const Home = (props) => {
       >
         Get Credentials
       </Button>
+      <br />
+      <br />
+      <Button
+        variant={"contained"}
+        onClick={() => {
+          history.push("/verifier");
+        }}
+      >
+        Verify Credentials
+      </Button>
     </Base>
   );
 };

@@ -1,0 +1,22 @@
+{
+  "web": {
+    "VerifiablePresentation": {
+      "query": [
+        {
+          "type": "QueryByExample",
+          "credentialQuery": {
+            "reason": "Please present an UniversityDegreeCredential for JaneDoe.",
+            "example": {
+              "@context": [
+                "https://www.w3.org/2018/credentials/v1",
+                "https://www.w3.org/2018/credentials/examples/v1"
+              ],
+              "type": ["UniversityDegreeCredential"]
+            }
+          }
+        }
+      ],
+      "challenge": "99612b24-63d9-11ea-b99f-4f66f3e4f81a"
+    }
+  }
+}
